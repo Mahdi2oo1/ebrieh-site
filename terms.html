@@ -1,1 +1,71 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>عبريه | الشروط والأحكام</title>
+  <style>
+    :root{--bg:#edebdc;--card:#fff;--text:#02393e;--muted:#415a5e;--border:#d6d2c4;--primary:#02393e;--accent:#f4c430;--white:#fff;--shadow:0 10px 25px rgba(0,0,0,.06);--radius:18px;}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,"Noto Kufi Arabic","Noto Naskh Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+    a{color:inherit;text-decoration:none} .container{max-width:980px;margin:0 auto;padding:0 16px}
+    .topbar{position:sticky;top:0;z-index:50;background:var(--primary);color:var(--white);border-bottom:1px solid rgba(255,255,255,.14)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;min-width:160px}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:var(--shadow)}
+    .brand h1{font-size:16px;margin:0;font-weight:900;color:var(--white)} .brand p{margin:0;font-size:12px;color:rgba(255,255,255,.8);font-weight:700}
+    .nav{display:flex;flex-wrap:wrap;gap:8px} .nav a{padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:800;color:var(--white)}
+    .page{padding:18px 0} .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .title{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:12px}
+    .title h2{margin:0;font-size:18px;font-weight:950;color:var(--primary)} .meta{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}
+    .list{margin:8px 0 0 0;padding:0 18px 0 0;font-weight:700;font-size:14px} .list li{margin:6px 0}
+    .note{margin-top:12px;padding:12px;border:1px dashed var(--border);border-radius:14px;background:#fff;color:var(--muted);font-weight:800;font-size:13px}
+    footer{padding:18px 0 26px;color:var(--muted);font-weight:800;font-size:12px}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div><h1>عبريه</h1><p>الموقع الرسمي</p></div>
+        </div>
+        <nav class="nav">
+          <a href="index.html">الرئيسية</a>
+          <a href="privacy.html">الخصوصية</a>
+          <a href="terms.html">الشروط</a>
+          <a href="faq.html">FAQ</a>
+          <a href="support.html">الدعم</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
+  <main class="container page">
+    <div class="card">
+      <div class="title">
+        <h2>الشروط والأحكام</h2>
+        <div class="meta">آخر تحديث: 20 فبراير 2026</div>
+      </div>
+
+      <ul class="list">
+        <li>التطبيق يقدّم معلومات إرشادية عن خطوط النقل وقد تختلف التفاصيل على أرض الواقع.</li>
+        <li>نسعى للدقة، لكن لا نضمن توافر الخط أو ثبات الأسعار/الأوقات دائماً.</li>
+        <li>يُمنع إساءة استخدام التطبيق أو نسخ المحتوى لأغراض تجارية دون إذن.</li>
+        <li>قد نقوم بتحديث المحتوى والميزات في أي وقت لتحسين الخدمة.</li>
+        <li>استمرار استخدامك للتطبيق يعني موافقتك على هذه الشروط.</li>
+      </ul>
+
+      <div class="note">
+        عند إطلاق “خدمة الطلب” مستقبلاً، قد نضيف شروطاً إضافية مرتبطة بالحجوزات أو الدفع أو الحسابات، وسيتم نشرها هنا.
+      </div>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> عبريه — جميع الحقوق محفوظة.</div>
+    </footer>
+  </main>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
