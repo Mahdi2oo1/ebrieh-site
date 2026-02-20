@@ -1,1 +1,91 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>عبريه | الأسئلة الشائعة</title>
+  <style>
+    :root{--bg:#edebdc;--card:#fff;--text:#02393e;--muted:#415a5e;--border:#d6d2c4;--primary:#02393e;--accent:#f4c430;--white:#fff;--shadow:0 10px 25px rgba(0,0,0,.06);--radius:18px;}
+    *{box-sizing:border-box} body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,"Noto Kufi Arabic","Noto Naskh Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.75}
+    a{color:inherit;text-decoration:none} .container{max-width:980px;margin:0 auto;padding:0 16px}
+    .topbar{position:sticky;top:0;z-index:50;background:var(--primary);color:var(--white);border-bottom:1px solid rgba(255,255,255,.14)}
+    .topbar-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0}
+    .brand{display:flex;align-items:center;gap:10px;min-width:160px}
+    .logo{width:38px;height:38px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));box-shadow:var(--shadow)}
+    .brand h1{font-size:16px;margin:0;font-weight:900;color:var(--white)} .brand p{margin:0;font-size:12px;color:rgba(255,255,255,.8);font-weight:700}
+    .nav{display:flex;flex-wrap:wrap;gap:8px} .nav a{padding:8px 10px;border:1px solid rgba(255,255,255,.14);border-radius:999px;background:rgba(255,255,255,.08);font-size:13px;font-weight:800;color:var(--white)}
+    .page{padding:18px 0} .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
+    .title{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:12px}
+    .title h2{margin:0;font-size:18px;font-weight:950;color:var(--primary)} .meta{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap}
+    details{border:1px solid var(--border);border-radius:16px;padding:12px;background:#fff;margin:10px 0}
+    summary{cursor:pointer;font-weight:950;font-size:14px;list-style:none;color:var(--primary)}
+    summary::-webkit-details-marker{display:none}
+    details p{margin:10px 0 0 0;color:var(--muted);font-weight:800;font-size:13px}
+    footer{padding:18px 0 26px;color:var(--muted);font-weight:800;font-size:12px}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+        <div class="brand">
+          <div class="logo" aria-hidden="true"></div>
+          <div><h1>عبريه</h1><p>الموقع الرسمي</p></div>
+        </div>
+        <nav class="nav">
+          <a href="index.html">الرئيسية</a>
+          <a href="privacy.html">الخصوصية</a>
+          <a href="terms.html">الشروط</a>
+          <a href="faq.html">FAQ</a>
+          <a href="support.html">الدعم</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
+  <main class="container page">
+    <div class="card">
+      <div class="title">
+        <h2>الأسئلة الشائعة (FAQ)</h2>
+        <div class="meta">إجابات مختصرة وواضحة</div>
+      </div>
+
+      <details>
+        <summary>ما هو تطبيق عبريه؟</summary>
+        <p>عبريه هو دليل يساعدك على معرفة خطوط النقل الخاص والحكومي داخل المدن العراقية مع تفاصيل الرحلة (السعر، المسافة، الوقت، نوع المركبة، والمسار).</p>
+      </details>
+
+      <details>
+        <summary>هل الأسعار والوقت ثابتة؟</summary>
+        <p>قد تتغير حسب الزحام أو الظروف الميدانية أو تحديثات الخطوط. نسعى لتحديث المعلومات قدر الإمكان.</p>
+      </details>
+
+      <details>
+        <summary>هل يمكنني طلب مركبة من خلال التطبيق؟</summary>
+        <p>خدمة الطلب مخطط لها مستقبلاً. حالياً التطبيق يركّز على عرض المعلومات وتنظيمها.</p>
+      </details>
+
+      <details>
+        <summary>هل التطبيق مجاني؟</summary>
+        <p>نعم حالياً.</p>
+      </details>
+
+      <details>
+        <summary>هل يجمع التطبيق بيانات شخصية؟</summary>
+        <p>لا نجمع بيانات حساسة بدون موافقة المستخدم، وقد نجمع بيانات عامة غير محددة الهوية لتحسين الأداء.</p>
+      </details>
+
+      <details>
+        <summary>كيف أتواصل مع الدعم؟</summary>
+        <p>عبر صفحة الدعم أو البريد: <strong style="direction:ltr;unicode-bidi:plaintext;">mahdi.alkarbalai01@gmail.com</strong></p>
+      </details>
+    </div>
+
+    <footer>
+      <div>© <span id="year"></span> عبريه — جميع الحقوق محفوظة.</div>
+    </footer>
+  </main>
+
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>
