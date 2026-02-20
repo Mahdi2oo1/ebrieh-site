@@ -3,8 +3,11 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <meta name="description" content="الموقع الرسمي لتطبيق عبريه – دليل خطوط النقل الخاص والحكومي داخل المدن العراقية." />
+  <meta name="description" content="عبريه — دليل خطوط النقل الخاص والحكومي داخل المدن العراقية." />
   <title>عبريه | الرئيسية</title>
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <style>
     :root{
@@ -16,14 +19,14 @@
       --primary:#02393e;
       --accent:#f4c430;
       --white:#ffffff;
-      --shadow: 0 10px 25px rgba(0,0,0,.06);
-      --radius: 18px;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:18px;
     }
 
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Kufi Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, Tahoma, sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.75;
@@ -31,13 +34,13 @@
     a{ color:inherit; text-decoration:none; }
     .container{ max-width:980px; margin:0 auto; padding:0 16px; }
 
-    /* Header بدون شعار */
+    /* Header */
     .topbar{
       position:sticky;
       top:0;
       z-index:50;
-      background: var(--primary);
-      border-bottom: 1px solid rgba(255,255,255,.14);
+      background:var(--primary);
+      border-bottom:1px solid rgba(255,255,255,.14);
     }
     .topbar-inner{
       display:flex;
@@ -45,7 +48,6 @@
       justify-content:center;
       padding:12px 0;
     }
-
     .nav{
       display:flex;
       flex-wrap:wrap;
@@ -56,31 +58,31 @@
       padding:8px 14px;
       border:1px solid rgba(255,255,255,.18);
       border-radius:999px;
-      background: rgba(255,255,255,.08);
+      background:rgba(255,255,255,.08);
       font-size:14px;
       font-weight:800;
-      color: var(--white);
+      color:var(--white);
       transition:.15s ease;
     }
     .nav a:hover{
-      border-color: rgba(255,255,255,.28);
-      transform: translateY(-1px);
+      border-color:rgba(255,255,255,.28);
+      transform:translateY(-1px);
     }
 
     /* Hero */
     .hero{ padding:22px 0 12px; }
     .hero-card{
-      background: var(--card);
+      background:var(--card);
       border:1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding:18px;
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:20px;
     }
     .headline h2{
-      margin:0 0 6px 0;
+      margin:0 0 6px;
       font-size:22px;
       font-weight:950;
-      color: var(--primary);
+      color:var(--primary);
     }
     .headline p{
       margin:0;
@@ -102,48 +104,68 @@
       background:#fff;
       font-size:12px;
       font-weight:900;
-      color:var(--text);
     }
 
     .feature-grid{
-      margin-top:14px;
+      margin-top:16px;
+      display:grid;
+      grid-template-columns:repeat(12,1fr);
+      gap:10px;
+    }
+    .feature{
+      grid-column:span 6;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+    }
+    .feature h3{
+      margin:0 0 4px;
+      font-size:15px;
+      font-weight:950;
+      color:var(--primary);
+    }
+    .feature p{
+      margin:0;
+      font-size:13px;
+      color:var(--muted);
+      font-weight:700;
+    }
+    @media (max-width:720px){
+      .feature{ grid-column:span 12; }
+    }
+
+    /* Social */
+    .social-grid{
+      margin-top:20px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap:10px;
     }
-    .feature{
+    .social-box{
       grid-column: span 6;
       background:#fff;
       border:1px solid var(--border);
       border-radius:16px;
       padding:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:var(--primary);
+      transition:.15s ease;
     }
-    .feature h3{
-      margin:0 0 4px 0;
-      font-size:14px;
-      font-weight:950;
-      color: var(--primary);
+    .social-box i{
+      font-size:18px;
+      width:22px;
+      text-align:center;
     }
-    .feature p{
-      margin:0;
-      color:var(--muted);
-      font-size:13px;
-      font-weight:700;
+    .social-box:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
     }
-
     @media (max-width:720px){
-      .feature{ grid-column: span 12; }
-    }
-
-    .note{
-      margin-top:12px;
-      padding:12px;
-      border:1px dashed var(--border);
-      border-radius:14px;
-      background:#fff;
-      color: var(--muted);
-      font-weight:800;
-      font-size:13px;
+      .social-box{ grid-column: span 12; }
     }
 
     footer{
@@ -151,77 +173,96 @@
       color:var(--muted);
       font-weight:800;
       font-size:12px;
-      text-align:center;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Header فقط أقسام -->
-  <header class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <nav class="nav">
-          <a href="index.html">الرئيسية</a>
-          <a href="privacy.html">سياسة الخصوصية</a>
-          <a href="terms.html">الشروط والأحكام</a>
-          <a href="faq.html">FAQ</a>
-          <a href="support.html">الدعم</a>
-        </nav>
-      </div>
+<header class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <nav class="nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">الدعم</a>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container">
+<main class="container">
 
-    <section class="hero">
-      <div class="hero-card">
-        <div class="headline">
-          <h2>دليل خطوط النقل داخل المدن العراقية</h2>
-          <p>يعرض وينظّم خطوط النقل الخاص (الكيات) والنقل العام مع تفاصيل السعر والمسافة والوقت ونوع المركبة.</p>
+  <section class="hero">
+    <div class="hero-card">
+      <div class="headline">
+        <h2>دليل خطوط النقل داخل المدن العراقية</h2>
+        <p>يعرض وينظّم خطوط النقل الخاص (الكيات) والنقل العام مع تفاصيل السعر والمسافة والوقت ونوع المركبة.</p>
+      </div>
+
+      <div class="badges">
+        <span class="badge">خطوط خاصة وحكومية</span>
+        <span class="badge">السعر / المسافة / الوقت</span>
+        <span class="badge">تحديث مستمر</span>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature">
+          <h3>معلومات واضحة</h3>
+          <p>اعرف تفاصيل الخط قبل الانطلاق.</p>
         </div>
-
-        <div class="badges">
-          <span class="badge">خطوط خاصة وحكومية</span>
-          <span class="badge">السعر / المسافة / الوقت</span>
-          <span class="badge">تحديث مستمر</span>
+        <div class="feature">
+          <h3>تنظيم المسارات</h3>
+          <p>عرض الخطوط من البداية إلى النهاية.</p>
         </div>
-
-        <div class="feature-grid">
-          <div class="feature">
-            <h3>معلومات واضحة</h3>
-            <p>تعرف تفاصيل الخط قبل الانطلاق.</p>
-          </div>
-          <div class="feature">
-            <h3>تنظيم داخل المدن</h3>
-            <p>عرض المسارات بشكل منظم وسهل.</p>
-          </div>
-          <div class="feature">
-            <h3>تحسين مستمر</h3>
-            <p>تحديث البيانات بشكل متواصل.</p>
-          </div>
-          <div class="feature">
-            <h3>دعم مباشر</h3>
-            <p>إرسال الملاحظات بسهولة.</p>
-          </div>
+        <div class="feature">
+          <h3>تحسين مستمر</h3>
+          <p>تحديث البيانات بشكل متواصل.</p>
         </div>
-
-        <div class="note">
-          قد تختلف الأسعار أو الأوقات حسب الزحام والظروف الميدانية.
+        <div class="feature">
+          <h3>دعم مباشر</h3>
+          <p>إرسال الملاحظات بسهولة.</p>
         </div>
       </div>
-    </section>
 
-    <footer>
-      © <span id="year"></span> عبريه — جميع الحقوق محفوظة.
-    </footer>
+      <h3 style="margin-top:22px;font-weight:950;color:var(--primary);">تابعنا على</h3>
 
-  </main>
+      <div class="social-grid">
+        <a class="social-box" href="https://t.me/eabrih" target="_blank">
+          <i class="fa-brands fa-telegram"></i>
+          Telegram
+        </a>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+        <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank">
+          <i class="fa-brands fa-instagram"></i>
+          Instagram
+        </a>
+
+        <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank">
+          <i class="fa-brands fa-facebook"></i>
+          Facebook
+        </a>
+
+        <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank">
+          <i class="fa-brands fa-linkedin"></i>
+          LinkedIn
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> عبريه — جميع الحقوق محفوظة.
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 
 </body>
 </html>
