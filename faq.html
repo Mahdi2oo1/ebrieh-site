@@ -5,92 +5,244 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>FAQ</title>
 
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
   <style>
-    :root{--bg:#edebdc;--card:#ffffff;--text:#02393e;--muted:#415a5e;--border:#d6d2c4;--primary:#02393e;--accent:#f4c430;--white:#ffffff;--shadow:0 10px 25px rgba(0,0,0,.06);--radius:18px;}
-    *{box-sizing:border-box;}
-    body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Arial,"Noto Kufi Arabic","Noto Naskh Arabic",Tahoma,sans-serif;background:var(--bg);color:var(--text);line-height:1.75;}
-    a{color:inherit;text-decoration:none;}
-    .container{max-width:980px;margin:0 auto;padding:0 16px;}
+    :root{
+      --bg:#edebdc;
+      --card:#ffffff;
+      --text:#02393e;
+      --muted:#415a5e;
+      --border:#d6d2c4;
+      --primary:#02393e;
+      --accent:#f4c430;
+      --white:#ffffff;
+      --shadow:0 10px 25px rgba(0,0,0,.06);
+      --radius:18px;
+    }
 
-    .topbar{position:sticky;top:0;z-index:50;background:var(--primary);border-bottom:1px solid rgba(255,255,255,.14);}
-    .topbar-inner{display:flex;align-items:center;justify-content:center;padding:12px 0;}
-    .nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-    .nav a{padding:8px 14px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.08);font-size:14px;font-weight:800;color:var(--white);transition:.15s ease;}
-    .nav a:hover{border-color:rgba(255,255,255,.28);transform:translateY(-1px);}
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Kufi Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:980px; margin:0 auto; padding:0 16px; }
 
-    .page{padding:18px 0 8px;}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px;}
-    .title{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:10px;border-bottom:1px solid var(--border);margin-bottom:12px;}
-    .title h2{margin:0;font-size:18px;font-weight:950;color:var(--primary);}
-    .meta{font-size:12px;color:var(--muted);font-weight:800;white-space:nowrap;}
+    /* Header */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background:var(--primary);
+      border-bottom:1px solid rgba(255,255,255,.14);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 0;
+    }
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:center;
+    }
+    .nav a{
+      padding:8px 14px;
+      border:1px solid rgba(255,255,255,.18);
+      border-radius:999px;
+      background:rgba(255,255,255,.08);
+      font-size:14px;
+      font-weight:800;
+      color:var(--white);
+      transition:.15s ease;
+    }
+    .nav a:hover{
+      border-color:rgba(255,255,255,.28);
+      transform:translateY(-1px);
+    }
 
-    details{border:1px solid var(--border);border-radius:16px;padding:12px;background:#fff;margin:10px 0;}
-    summary{cursor:pointer;font-weight:950;font-size:14px;list-style:none;color:var(--primary);}
-    summary::-webkit-details-marker{display:none;}
-    details p{margin:10px 0 0 0;color:var(--muted);font-weight:800;font-size:13px;}
-    .email{direction:ltr;unicode-bidi:plaintext;font-weight:950;color:var(--primary);}
+    /* Layout */
+    .page{ padding:18px 0 8px; }
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:18px;
+    }
+    .title{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:10px;
+      padding-bottom:10px;
+      border-bottom:1px solid var(--border);
+      margin-bottom:12px;
+    }
+    .title h2{
+      margin:0;
+      font-size:18px;
+      font-weight:950;
+      color:var(--primary);
+    }
+    .meta{
+      font-size:12px;
+      color:var(--muted);
+      font-weight:800;
+      white-space:nowrap;
+    }
 
-    footer{padding:18px 0 26px;color:var(--muted);font-weight:800;font-size:12px;}
+    /* FAQ */
+    details{
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12px;
+      background:#fff;
+      margin:10px 0;
+    }
+    summary{
+      cursor:pointer;
+      font-weight:950;
+      font-size:14px;
+      list-style:none;
+      color:var(--primary);
+    }
+    summary::-webkit-details-marker{ display:none; }
+    details p{
+      margin:10px 0 0 0;
+      color:var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+
+    /* Social */
+    .social-grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:10px;
+    }
+    .social-box{
+      grid-column: span 6;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12px;
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:900;
+      color:var(--primary);
+      transition:.15s ease;
+    }
+    .social-box i{
+      font-size:18px;
+      width:22px;
+      text-align:center;
+    }
+    .social-box:hover{
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+    @media (max-width:720px){
+      .social-box{ grid-column: span 12; }
+    }
+
+    footer{
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
   </style>
 </head>
+
 <body>
-  <header class="topbar">
-    <div class="container">
-      <div class="topbar-inner">
-        <nav class="nav">
-          <a href="index.html">الرئيسية</a>
-          <a href="privacy.html">سياسة الخصوصية</a>
-          <a href="terms.html">الشروط والأحكام</a>
-          <a href="faq.html">FAQ</a>
-          <a href="support.html">الدعم</a>
-        </nav>
-      </div>
+
+<header class="topbar">
+  <div class="container">
+    <div class="topbar-inner">
+      <nav class="nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="privacy.html">سياسة الخصوصية</a>
+        <a href="terms.html">الشروط والأحكام</a>
+        <a href="faq.html">FAQ</a>
+        <a href="support.html">الدعم</a>
+      </nav>
     </div>
-  </header>
+  </div>
+</header>
 
-  <main class="container page">
-    <div class="card">
-      <div class="title">
-        <h2>الأسئلة الشائعة (FAQ)</h2>
-        <div class="meta">إجابات مختصرة وواضحة</div>
-      </div>
+<main class="container page">
 
-      <details>
-        <summary>ما هو تطبيق عبريه؟</summary>
-        <p>عبريه هو دليل يساعدك على معرفة خطوط النقل الخاص والحكومي داخل المدن العراقية مع تفاصيل الرحلة (السعر، المسافة، الوقت، نوع المركبة، والمسار).</p>
-      </details>
-
-      <details>
-        <summary>هل الأسعار والوقت ثابتة؟</summary>
-        <p>قد تتغير حسب الزحام أو الظروف الميدانية أو تحديثات الخطوط. نسعى لتحديث المعلومات قدر الإمكان.</p>
-      </details>
-
-      <details>
-        <summary>هل يمكنني طلب مركبة من خلال التطبيق؟</summary>
-        <p>خدمة الطلب مخطط لها مستقبلاً. حالياً التطبيق يركّز على عرض المعلومات وتنظيمها.</p>
-      </details>
-
-      <details>
-        <summary>هل التطبيق مجاني؟</summary>
-        <p>نعم حالياً.</p>
-      </details>
-
-      <details>
-        <summary>هل يجمع التطبيق بيانات شخصية؟</summary>
-        <p>لا نجمع بيانات حساسة بدون موافقة المستخدم، وقد نجمع بيانات عامة غير محددة الهوية لتحسين الأداء.</p>
-      </details>
-
-      <details>
-        <summary>كيف أتواصل مع الدعم؟</summary>
-        <p>عبر صفحة الدعم أو البريد: <span class="email">mahdi.alkarbalai01@gmail.com</span></p>
-      </details>
+  <div class="card">
+    <div class="title">
+      <h2>الأسئلة الشائعة (FAQ)</h2>
+      <div class="meta">إجابات مختصرة وواضحة</div>
     </div>
 
-    <footer>
-      <div>© <span id="year"></span> عبريه — جميع الحقوق محفوظة.</div>
-    </footer>
-  </main>
+    <details>
+      <summary>ما هو تطبيق عبريه؟</summary>
+      <p>عبريه هو دليل يساعدك على معرفة خطوط النقل الخاص والحكومي داخل المدن العراقية مع تفاصيل الرحلة.</p>
+    </details>
 
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+    <details>
+      <summary>هل الأسعار والوقت ثابتة؟</summary>
+      <p>قد تتغير حسب الزحام أو الظروف الميدانية. نسعى لتحديث المعلومات باستمرار.</p>
+    </details>
+
+    <details>
+      <summary>هل التطبيق مجاني؟</summary>
+      <p>نعم حالياً.</p>
+    </details>
+
+    <details>
+      <summary>كيف أتواصل معكم؟</summary>
+      <p>عبر صفحة الدعم أو البريد الإلكتروني.</p>
+    </details>
+
+    <h3 style="margin-top:18px;font-weight:950;color:var(--primary);">تابعنا على</h3>
+
+    <div class="social-grid">
+      <a class="social-box" href="https://t.me/eabrih" target="_blank">
+        <i class="fa-brands fa-telegram"></i>
+        Telegram
+      </a>
+
+      <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank">
+        <i class="fa-brands fa-instagram"></i>
+        Instagram
+      </a>
+
+      <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank">
+        <i class="fa-brands fa-facebook"></i>
+        Facebook
+      </a>
+
+      <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank">
+        <i class="fa-brands fa-linkedin"></i>
+        LinkedIn
+      </a>
+    </div>
+
+  </div>
+
+  <footer>
+    © <span id="year"></span> عبريه — جميع الحقوق محفوظة.
+  </footer>
+
+</main>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+
 </body>
 </html>
