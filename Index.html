@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="الموقع الرسمي لتطبيق عبريه – دليل خطوط النقل الخاص والحكومي داخل المدن العراقية." />
+  <title>عبريه | الرئيسية</title>
+
+  <style>
+    :root{
+      --bg:#edebdc;
+      --card:#ffffff;
+      --text:#02393e;
+      --muted:#415a5e;
+      --border:#d6d2c4;
+      --primary:#02393e;
+      --accent:#f4c430;
+      --white:#ffffff;
+      --shadow: 0 10px 25px rgba(0,0,0,.06);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Kufi Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      line-height:1.75;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .container{ max-width:980px; margin:0 auto; padding:0 16px; }
+
+    /* Header */
+    .topbar{
+      position:sticky;
+      top:0;
+      z-index:50;
+      background: var(--primary);
+      color: var(--white);
+      border-bottom: 1px solid rgba(255,255,255,.14);
+    }
+    .topbar-inner{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 0;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width: 160px;
+    }
+    .logo-img{
+      width:38px;
+      height:38px;
+      border-radius:12px;
+      object-fit:cover;
+      box-shadow: var(--shadow);
+      display:block;
+      background:#fff;
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .brand h1{
+      font-size:16px;
+      margin:0;
+      font-weight:900;
+      letter-spacing:.2px;
+      color: var(--white);
+    }
+    .brand p{
+      margin:0;
+      font-size:12px;
+      color: rgba(255,255,255,.8);
+      font-weight:700;
+    }
+
+    .nav{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-start;
+    }
+    .nav a{
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:999px;
+      background: rgba(255,255,255,.08);
+      font-size:13px;
+      font-weight:800;
+      color: var(--white);
+      transition:.15s ease;
+    }
+    .nav a:hover{
+      border-color: rgba(255,255,255,.28);
+      transform: translateY(-1px);
+    }
+    .nav a:active{ transform: translateY(0); }
+
+    .cta{
+      display:flex;
+      gap:8px;
+      align-items:center;
+      justify-content:flex-end;
+      min-width: 170px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:10px 12px;
+      border-radius:12px;
+      border:1px solid var(--border);
+      background: var(--white);
+      font-size:13px;
+      font-weight:900;
+      cursor:pointer;
+      transition:.15s ease;
+      white-space:nowrap;
+      color: var(--primary);
+    }
+    .btn.primary{
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    /* Hero */
+    .hero{ padding:22px 0 12px; }
+    .hero-card{
+      background: var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .hero-top{
+      display:flex;
+      flex-wrap:wrap;
+      gap:14px;
+      align-items:flex-start;
+      justify-content:space-between;
+    }
+    .headline{ flex:1 1 420px; min-width:280px; }
+    .headline h2{
+      margin:0 0 6px 0;
+      font-size:22px;
+      font-weight:950;
+      letter-spacing:.2px;
+      color: var(--primary);
+    }
+    .headline p{
+      margin:0;
+      color:var(--muted);
+      font-weight:700;
+      font-size:14px;
+    }
+    .badges{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+      justify-content:flex-start;
+      align-items:center;
+      margin-top:2px;
+    }
+    .badge{
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid var(--border);
+      background:#fff;
+      font-size:12px;
+      font-weight:900;
+      color:var(--text);
+    }
+
+    .feature-grid{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap:10px;
+    }
+    .feature{
+      grid-column: span 6;
+      background:#fff;
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:12px;
+    }
+    .feature h3{
+      margin:0 0 4px 0;
+      font-size:14px;
+      font-weight:950;
+      color: var(--primary);
+    }
+    .feature p{
+      margin:0;
+      color:var(--muted);
+      font-size:13px;
+      font-weight:700;
+    }
+
+    @media (max-width:720px){
+      .feature{ grid-column: span 12; }
+      .cta{ display:none; }
+      .brand{ min-width:auto; }
+    }
+
+    /* Cards / Note */
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding:18px;
+    }
+    .note{
+      margin-top:12px;
+      padding:12px;
+      border:1px dashed var(--border);
+      border-radius:14px;
+      background:#fff;
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+
+    /* Footer */
+    footer{
+      padding:18px 0 26px;
+      color:var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    .footer-card{
+      border-top:1px solid var(--border);
+      padding-top:14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+      justify-content:space-between;
+      align-items:center;
+    }
+    .footer-links{
+      display:flex;
+      flex-wrap:wrap;
+      gap:10px;
+    }
+    .footer-links a{
+      padding:6px 10px;
+      border:1px solid var(--border);
+      border-radius:999px;
+      background:#fff;
+      color:var(--primary);
+      font-size:12px;
+      font-weight:900;
+    }
+  </style>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="container">
+      <div class="topbar-inner">
+
+        <!-- ✅ Brand (Logo + Title) -->
+        <div class="brand" aria-label="عبريه">
+          <!-- ✅ المسار حسب ما ذكرت: ملف/مجلد فيه الصورة -->
+          <img class="Logo-img" src="assets/logo.png" alt="شعار عبريه">
+          <div>
+            <h1>عبريه</h1>
+            <p>الموقع الرسمي</p>
+          </div>
+        </div>
+
+        <!-- ✅ Navigation -->
+        <nav class="nav" aria-label="روابط الموقع">
+          <a href="index.html">الرئيسية</a>
+          <a href="privacy.html">سياسة الخصوصية</a>
+          <a href="terms.html">الشروط والأحكام</a>
+          <a href="faq.html">FAQ</a>
+          <a href="support.html">الدعم</a>
+        </nav>
+
+        <!-- ✅ CTA -->
+        <div class="cta">
+          <a class="btn primary" href="support.html">تواصل معنا</a>
+          <a class="btn" href="privacy.html">الخصوصية</a>
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <section class="hero">
+      <div class="hero-card">
+        <div class="hero-top">
+          <div class="headline">
+            <h2>عبريه — دليل خطوط النقل داخل المدن العراقية</h2>
+            <p>يعرض وينظّم خطوط النقل الخاص (الكيات) والنقل العام، مع تفاصيل الرحلة مثل السعر والمسافة والوقت ونوع المركبة والمسار.</p>
+          </div>
+
+          <div class="badges" aria-label="مزايا مختصرة">
+            <span class="badge">✅ خطوط خاصة وحكومية</span>
+            <span class="badge">✅ السعر/المسافة/الوقت</span>
+            <span class="badge">🔜 خدمة الطلب مستقبلاً</span>
+          </div>
+        </div>
+
+        <div class="feature-grid" aria-label="مزايا التطبيق">
+          <div class="feature">
+            <h3>معلومات واضحة وسريعة</h3>
+            <p>اعرف تفاصيل الخط قبل الانطلاق لتوفير الوقت وتقليل التشتت.</p>
+          </div>
+          <div class="feature">
+            <h3>تنظيم داخل المدن</h3>
+            <p>عرض مسارات الخطوط من نقطة الانطلاق إلى النهاية بشكل منظم.</p>
+          </div>
+          <div class="feature">
+            <h3>دقة وتحسين مستمر</h3>
+            <p>نعمل على تحديث البيانات وتحسين التجربة بشكل متواصل.</p>
+          </div>
+          <div class="feature">
+            <h3>دعم وتواصل مباشر</h3>
+            <p>يمكنك إرسال الملاحظات أو الإبلاغ عن خطأ بسهولة.</p>
+          </div>
+        </div>
+
+        <div class="note">
+          ملاحظة: يمكن أن تتغيّر الأسعار أو الأوقات حسب الزحام والظروف الميدانية. نسعى إلى تحديث المعلومات قدر الإمكان.
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="card">
+        <h3 style="margin:0 0 8px; font-weight:950; color:var(--primary);">روابط مهمة</h3>
+        <p class="note" style="margin-top:0;">
+          للوصول السريع:
+          <a href="privacy.html"><strong>سياسة الخصوصية</strong></a> —
+          <a href="terms.html"><strong>الشروط والأحكام</strong></a> —
+          <a href="faq.html"><strong>FAQ</strong></a> —
+          <a href="support.html"><strong>الدعم</strong></a>
+        </p>
+      </div>
+    </section>
+
+    <footer>
+      <div class="footer-card">
+        <div>© <span id="year"></span> عبريه — جميع الحقوق محفوظة.</div>
+        <div class="footer-links">
+          <a href="privacy.html">الخصوصية</a>
+          <a href="terms.html">الشروط</a>
+          <a href="faq.html">FAQ</a>
+          <a href="support.html">الدعم</a>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
