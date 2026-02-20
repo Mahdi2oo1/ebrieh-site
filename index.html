@@ -7,17 +7,17 @@
   <title>عبريه | الموقع الرسمي</title>
 
   <style>
-    :root{
-      --bg:#F8FAFC;
-      --card:#FFFFFF;
-      --text:#1F2937;
-      --muted:#6B7280;
-      --border:#E5E7EB;
-      --primary:#1E40AF;
-      --accent:#3B82F6;
-      --shadow: 0 10px 25px rgba(0,0,0,.06);
-      --radius: 18px;
-    }
+:root{
+  --bg:#edebdc;            /* الخلفية الأساسية */
+  --card:#ffffff;          /* الكروت */
+  --text:#02393e;          /* النص الرئيسي */
+  --muted:#5c6b6e;         /* نص ثانوي */
+  --border:#d6d2c4;        /* حدود خفيفة */
+  --primary:#02393e;       /* اللون الرئيسي */
+  --accent:#f4c430;        /* أصفر احترافي */
+  --shadow: 0 10px 25px rgba(0,0,0,.06);
+  --radius: 18px;
+}
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -31,6 +31,11 @@
 
     /* Header */
     .topbar{
+      background:#02393e;
+      color:#ffffff;
+      .topbar a {
+  color: #ffffff;
+}
       position:sticky;
       top:0;
       z-index:50;
@@ -110,11 +115,11 @@
       transition:.15s ease;
       white-space:nowrap;
     }
-    .btn.primary{
-      background:var(--primary);
-      border-color:var(--primary);
-      color:#fff;
-    }
+.btn.primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #02393e;
+}
     .btn:hover{transform: translateY(-1px)}
     .btn:active{transform: translateY(0)}
     .btn.primary:hover{filter: brightness(1.02)}
