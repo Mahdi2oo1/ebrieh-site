@@ -25,7 +25,7 @@
     *{ box-sizing:border-box; }
     body{
       margin:0;
-      font-family: system-ui, -apple-system, "Segoe UI", Arial, "Noto Kufi Arabic", "Noto Naskh Arabic", Tahoma, sans-serif;
+      font-family: system-ui,-apple-system,"Segoe UI",Arial,Tahoma,sans-serif;
       background:var(--bg);
       color:var(--text);
       line-height:1.75;
@@ -67,16 +67,23 @@
       border-color:rgba(255,255,255,.28);
       transform:translateY(-1px);
     }
+    .nav a.active{
+      background: var(--accent);
+      border-color: var(--accent);
+      color: var(--primary);
+    }
 
-    /* Layout */
-    .page{ padding:18px 0 8px; }
+    .page{ padding:20px 0; }
+
     .card{
       background:var(--card);
       border:1px solid var(--border);
       border-radius:var(--radius);
       box-shadow:var(--shadow);
-      padding:18px;
+      padding:20px;
+      margin-bottom:20px;
     }
+
     .title{
       display:flex;
       align-items:center;
@@ -84,25 +91,26 @@
       gap:10px;
       padding-bottom:10px;
       border-bottom:1px solid var(--border);
-      margin-bottom:12px;
+      margin-bottom:14px;
     }
     .title h2{
       margin:0;
-      font-size:18px;
+      font-size:20px;
       font-weight:950;
       color:var(--primary);
     }
     .meta{
       font-size:12px;
-      color:var(--muted);
       font-weight:800;
+      color:var(--muted);
       white-space:nowrap;
     }
+
     .muted{ color:var(--muted); font-weight:700; }
+
     .list{
-      margin:8px 0 0 0;
+      margin:10px 0 0;
       padding:0 18px 0 0;
-      color:var(--text);
       font-weight:700;
       font-size:14px;
     }
@@ -110,16 +118,16 @@
 
     /* Social */
     .social-grid{
-      margin-top:18px;
+      margin-top:14px;
       display:grid;
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat(12,1fr);
       gap:10px;
     }
     .social-box{
       grid-column: span 6;
       background:#fff;
       border:1px solid var(--border);
-      border-radius:16px;
+      border-radius:14px;
       padding:12px;
       display:flex;
       align-items:center;
@@ -134,19 +142,31 @@
       text-align:center;
     }
     .social-box:hover{
-      transform: translateY(-2px);
-      box-shadow: var(--shadow);
+      transform:translateY(-2px);
+      box-shadow:var(--shadow);
     }
     @media (max-width:720px){
       .social-box{ grid-column: span 12; }
     }
 
-    footer{
-      padding:18px 0 26px;
+    .note{
+      margin-top:14px;
+      padding:12px;
+      border:1px dashed var(--border);
+      border-radius:14px;
+      background:#fff;
+      font-size:13px;
+      font-weight:900;
       color:var(--muted);
-      font-weight:800;
-      font-size:12px;
     }
+
+footer {
+  padding: 18px 0 26px;
+  color: var(--muted);
+  font-weight: 800;
+  font-size: 12px;
+  text-align: center;
+}
   </style>
 </head>
 
@@ -157,6 +177,7 @@
     <div class="topbar-inner">
       <nav class="nav">
         <a href="index.html">الرئيسية</a>
+        <a href="about.html">من نحن</a>
         <a href="privacy.html">سياسة الخصوصية</a>
         <a href="terms.html">الشروط والأحكام</a>
         <a href="faq.html">FAQ</a>
@@ -174,38 +195,41 @@
       <div class="meta">آخر تحديث: 20 فبراير 2026</div>
     </div>
 
+    <p class="muted">
+      باستخدامك لموقع/تطبيق “عبريه” فإنك توافق على الشروط التالية:
+    </p>
+
     <ul class="list">
-      <li>التطبيق يقدّم معلومات إرشادية عن خطوط النقل وقد تختلف التفاصيل على أرض الواقع.</li>
-      <li>نسعى لتقديم معلومات دقيقة، لكن لا نضمن ثبات الأسعار أو الأوقات دائماً.</li>
-      <li>يُمنع إساءة استخدام التطبيق أو نسخ المحتوى لأغراض تجارية دون إذن.</li>
+      <li>يقدّم “عبريه” معلومات إرشادية عن خطوط النقل وقد تختلف التفاصيل على أرض الواقع.</li>
+      <li>نسعى للدقة، لكن لا نضمن ثبات الأسعار أو الأوقات أو توافر الخط دائماً.</li>
+      <li>يُمنع إساءة استخدام الخدمة أو محاولة تعطيلها أو استخدامها لأغراض مخالفة.</li>
+      <li>يُمنع نسخ المحتوى أو إعادة نشره لأغراض تجارية دون إذن.</li>
       <li>قد نقوم بتحديث المحتوى أو الميزات في أي وقت لتحسين الخدمة.</li>
-      <li>استمرار استخدامك للتطبيق يعني موافقتك على هذه الشروط.</li>
+      <li>استمرار استخدامك يعني موافقتك على أي تحديثات تُنشر هنا.</li>
     </ul>
 
-    <h3 style="margin-top:18px;font-weight:950;color:var(--primary);">تابعنا على</h3>
+    <div class="note">
+      بيان مسؤولية: المعلومات إرشادية وقد تتغير حسب الواقع.
+    </div>
+  </div>
+
+  <div class="card">
+    <h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;">تابعنا على</h2>
 
     <div class="social-grid">
-      <a class="social-box" href="https://t.me/eabrih" target="_blank">
-        <i class="fa-brands fa-telegram"></i>
-        Telegram
+      <a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener">
+        <i class="fa-brands fa-telegram"></i> Telegram
       </a>
-
-      <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank">
-        <i class="fa-brands fa-instagram"></i>
-        Instagram
+      <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank" rel="noopener">
+        <i class="fa-brands fa-instagram"></i> Instagram
       </a>
-
-      <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank">
-        <i class="fa-brands fa-facebook"></i>
-        Facebook
+      <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-facebook"></i> Facebook
       </a>
-
-      <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank">
-        <i class="fa-brands fa-linkedin"></i>
-        LinkedIn
+      <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank" rel="noopener">
+        <i class="fa-brands fa-linkedin"></i> LinkedIn
       </a>
     </div>
-
   </div>
 
   <footer>
@@ -215,7 +239,14 @@
 </main>
 
 <script>
-  document.getElementById('year').textContent = new Date().getFullYear();
+  const y = document.getElementById('year');
+  if (y) y.textContent = new Date().getFullYear();
+
+  const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
+  document.querySelectorAll('.nav a').forEach(a => {
+    const href = (a.getAttribute('href') || '').toLowerCase();
+    if (href === current) a.classList.add('active');
+  });
 </script>
 
 </body>
