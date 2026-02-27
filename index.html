@@ -3,8 +3,19 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
-<meta name="description" content="عبريه — يجمع خطوط النقل الجماعي الخاص والحكومي داخل المدن العراقية في مكان واحد." />
+
 <title>عبريه | الرئيسية</title>
+<meta name="description" id="metaDesc" content="عبريه — يجمع خطوط النقل الجماعي الخاص والحكومي داخل المدن العراقية في مكان واحد." />
+
+<!-- Open Graph -->
+<meta property="og:title" id="ogTitle" content="عبريه | الرئيسية" />
+<meta property="og:description" id="ogDesc" content="عبريه — دليل خطوط النقل داخل المدن العراقية في مكان واحد." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="preview.jpg" />
+<meta property="og:locale" content="ar_IQ" />
+
+<!-- Favicon -->
+<link rel="icon" href="favicon.png" />
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -39,11 +50,9 @@ a{ text-decoration:none; color:inherit; }
   background:var(--primary);
   border-bottom:1px solid rgba(255,255,255,.14);
 }
-.topbar-inner{
-  display:flex; justify-content:center; padding:12px 0;
-}
+.topbar-inner{ display:flex; justify-content:center; padding:12px 0; }
 .nav{
-  display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+  display:flex; flex-wrap:wrap; gap:8px; justify-content:center; align-items:center;
 }
 .nav a{
   padding:8px 14px;
@@ -52,12 +61,40 @@ a{ text-decoration:none; color:inherit; }
   background:rgba(255,255,255,.08);
   font-size:14px; font-weight:800;
   color:var(--white);
+  transition:.15s ease;
+  will-change:transform;
+}
+.nav a:hover{
+  border-color:rgba(255,255,255,.28);
+  transform:translateY(-1px);
 }
 .nav a.active{
   background:var(--accent);
   border-color:var(--accent);
   color:var(--primary);
 }
+
+/* Language toggle */
+.lang-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:transparent;
+  font-weight:900;
+  color:#fff;
+  cursor:pointer;
+  transition:.2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  will-change:transform;
+}
+.lang-btn:hover{
+  background:var(--accent);
+  color:var(--primary);
+  transform:translateY(-1px);
+}
+.lang-btn i{ font-size:14px; }
 
 /* Cards */
 .hero{ padding:22px 0; }
@@ -85,6 +122,86 @@ a{ text-decoration:none; color:inherit; }
   font-size:14px;
 }
 
+/* CTA row */
+.cta-row{
+  margin-top:16px;
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+
+/* Download button (UPGRADED) */
+.download-btn{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:14px 18px;
+  border-radius:999px;
+  font-weight:950;
+  border:0;
+  cursor:pointer;
+  color:var(--primary);
+  background: linear-gradient(135deg, #FDFF2D87 0%, #FFFBD1 45%, #F4DA3094 100%);
+  box-shadow: 0 14px 30px rgba(244,196,48,.28);
+  transform:translateZ(0);
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s ease;
+  text-decoration:none;
+}
+.download-btn::after{
+  content:"";
+  position:absolute;
+  inset:-3px;
+  border-radius:999px;
+  background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), rgba(255,255,255,0) 55%);
+  opacity:.65;
+  pointer-events:none;
+}
+.download-btn i{
+  width:34px;
+  height:34px;
+  border-radius:12px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  background:rgba(2, 57, 62, 0.1);
+}
+.download-btn:hover{
+  transform:translateY(-2px);
+  box-shadow: 0 18px 36px rgba(244,196,48,.38);
+  filter:saturate(1.05);
+}
+.download-btn:active{
+  transform:translateY(0px);
+  box-shadow: 0 10px 22px rgba(244,196,48,.24);
+}
+
+/* optional pulse */
+@keyframes pulseGlow{
+  0%,100%{ box-shadow:0 14px 30px rgba(244,196,48,.26); }
+  50%{ box-shadow:0 18px 38px rgba(244,196,48,.42); }
+}
+.download-btn.pulse{
+  animation:pulseGlow 2.2s ease-in-out infinite;
+}
+
+/* Secondary button */
+.secondary-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 16px;
+  border-radius:999px;
+  background:#fff;
+  color:var(--primary);
+  font-weight:950;
+  border:1px solid var(--border);
+  transition:.15s ease;
+  text-decoration:none;
+}
+.secondary-btn:hover{ transform:translateY(-1px); box-shadow:var(--shadow); }
+
 /* Badges */
 .badges{
   display:flex; gap:10px; flex-wrap:wrap;
@@ -97,6 +214,51 @@ a{ text-decoration:none; color:inherit; }
   font-weight:900;
   background:var(--accent);
   color:var(--primary);
+}
+
+/* Why */
+.why-grid{
+  margin-top:14px;
+  display:grid;
+  grid-template-columns:repeat(12,1fr);
+  gap:10px;
+}
+.why-box{
+  grid-column:span 6;
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:14px;
+  box-shadow:var(--shadow);
+  display:flex;
+  gap:12px;
+  align-items:flex-start;
+}
+.why-ico{
+  width:38px;
+  height:38px;
+  border-radius:12px;
+  background:rgba(244,196,48,.25);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--primary);
+  flex:0 0 auto;
+}
+.why-box h3{
+  margin:0 0 4px;
+  font-size:14px;
+  font-weight:950;
+  color:var(--primary);
+}
+.why-box p{
+  margin:0;
+  font-size:13px;
+  color:var(--muted);
+  font-weight:700;
+}
+@media(max-width:720px){
+  .why-box{ grid-column:span 12; }
 }
 
 /* Features */
@@ -199,13 +361,11 @@ a{ text-decoration:none; color:inherit; }
   font-weight:900;
   color:var(--primary);
   transition:.2s;
+  will-change:transform;
 }
 .social-box:hover{
   transform:translateY(-2px);
   box-shadow:var(--shadow);
-}
-.email-box:hover{
-  background:var(--accent);
 }
 @media(max-width:720px){
   .social-box{ grid-column:span 12; }
@@ -218,6 +378,39 @@ footer{
   font-size:12px;
   text-align:center;
 }
+
+/* Fade-in on scroll */
+.fade{
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .5s ease, transform .5s ease;
+}
+.fade.show{ opacity:1; transform:none; }
+
+/* Smooth language swap */
+.fade-swap{
+  opacity:0;
+  transform:translateY(2px);
+  transition:opacity .18s ease, transform .18s ease;
+}
+.fade-swap.show{ opacity:1; transform:none; }
+
+/* Scroll to top */
+#topBtn{
+  position:fixed;
+  bottom:18px;
+  right:18px;
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.05);
+  background:var(--accent);
+  color:var(--primary);
+  font-weight:950;
+  cursor:pointer;
+  display:none;
+  box-shadow:var(--shadow);
+}
 </style>
 </head>
 
@@ -227,124 +420,386 @@ footer{
 <div class="container">
 <div class="topbar-inner">
 <nav class="nav">
-<a href="index.html">الرئيسية</a>
-<a href="about.html">من نحن</a>
-<a href="privacy.html">سياسة الخصوصية</a>
-<a href="terms.html">الشروط والأحكام</a>
-<a href="faq.html">FAQ</a>
+  <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+  <a href="about.html" data-i18n="nav_about">من نحن</a>
+  <a href="privacy.html" data-i18n="nav_privacy">سياسة الخصوصية</a>
+  <a href="terms.html" data-i18n="nav_terms">الشروط والأحكام</a>
+  <a href="faq.html">FAQ</a>
+
+  <button id="langToggle" class="lang-btn" type="button" aria-label="Toggle language">
+    <i class="fa-solid fa-language"></i>
+    <span id="langLabel">EN</span>
+  </button>
 </nav>
 </div>
 </div>
 </header>
 
-<main class="container">
+<main class="container fade-swap show" id="pageRoot">
 <section class="hero">
 
 <!-- HERO -->
-<div class="hero-card">
-<div class="headline">
-<h2>لا تتحيّر بدوخة الخطوط</h2>
-<p>
-عبريه يجمع لك خطوط النقل الجماعي الخاص والحكومي في مكان واحد،
-من نقطة الانطلاق إلى الوصول، مع تفاصيل السعر، المسافة، والوقت.
-بدل ما تسأل وتحتار... افتح التطبيق واعرف خطك خلال ثواني.
-</p>
+<div class="hero-card fade">
+  <div class="headline">
+    <h2 data-i18n="hero_title">لا تتحيّر بدوخة الخطوط</h2>
+    <p data-i18n="hero_text">
+      عبريه يجمع لك خطوط النقل الجماعي الخاص والحكومي في مكان واحد،
+      من نقطة الانطلاق إلى الوصول، مع تفاصيل السعر، المسافة، والوقت.
+      بدل ما تسأل وتحتار... افتح التطبيق واعرف خطك خلال ثواني.
+    </p>
+
+    <div class="cta-row">
+      <a class="download-btn pulse" id="downloadBtn" href="#" target="_blank" rel="noopener">
+        <i class="fa-solid fa-download"></i>
+        <span data-i18n="cta_download">تحميل التطبيق</span>
+      </a>
+
+      <a class="secondary-btn" href="faq.html">
+        <i class="fa-solid fa-circle-question"></i>
+        <span data-i18n="cta_faq">الأسئلة الشائعة</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="badges">
+    <span class="badge" data-i18n="badge_1">مجاني بالكامل</span>
+    <span class="badge" data-i18n="badge_2">يعمل بدون إنترنت</span>
+    <span class="badge" data-i18n="badge_3">لا يوجد إعلانات</span>
+  </div>
+
+  <div class="feature-grid">
+    <div class="feature">
+      <h3 data-i18n="f1_title">تفاصيل الخط كاملة</h3>
+      <p data-i18n="f1_text">السعر، الوقت التقريبي، والمسافة لكل رحلة.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="f2_title">أبرز المحطات</h3>
+      <p data-i18n="f2_text">عرض واضح لنقاط المرور من البداية حتى النهاية.</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="f3_title">نوع المركبة والاتجاه</h3>
+      <p data-i18n="f3_text">تمييز بين النقل الخاص والحكومي (ذهاب / إياب).</p>
+    </div>
+    <div class="feature">
+      <h3 data-i18n="f4_title">تغطية مدن متعددة</h3>
+      <p data-i18n="f4_text">التوسع مستمر لإضافة المزيد من المدن والخطوط.</p>
+    </div>
+  </div>
 </div>
 
-<div class="badges">
-<span class="badge">مجاني بالكامل</span>
-<span class="badge">يعمل بدون إنترنت</span>
-<span class="badge">لا يوجد إعلانات</span>
-</div>
+<!-- WHY -->
+<div class="hero-card fade">
+  <div class="headline">
+    <h2 data-i18n="why_title">لماذا عبريه؟</h2>
+    <p data-i18n="why_text">مميزات بسيطة لكنها مهمة لتجربة أفضل.</p>
+  </div>
 
-<div class="feature-grid">
-<div class="feature">
-<h3>تفاصيل الخط كاملة</h3>
-<p>السعر، الوقت التقريبي، والمسافة لكل رحلة.</p>
-</div>
-<div class="feature">
-<h3>أبرز المحطات</h3>
-<p>عرض واضح لنقاط المرور من البداية حتى النهاية.</p>
-</div>
-<div class="feature">
-<h3>نوع المركبة والاتجاه</h3>
-<p>تمييز بين النقل الخاص والحكومي (ذهاب / إياب).</p>
-</div>
-<div class="feature">
-<h3>تغطية مدن متعددة</h3>
-<p>التوسع مستمر لإضافة المزيد من المدن والخطوط.</p>
-</div>
-</div>
+  <div class="why-grid">
+    <div class="why-box">
+      <div class="why-ico"><i class="fa-solid fa-map-location-dot"></i></div>
+      <div>
+        <h3 data-i18n="why_1_t">جميع الخطوط في مكان واحد</h3>
+        <p data-i18n="why_1_d">بدلاً من التشتت في مصادر متعددة.</p>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="why-ico"><i class="fa-solid fa-wifi-slash"></i></div>
+      <div>
+        <h3 data-i18n="why_2_t">يعمل بدون إنترنت</h3>
+        <p data-i18n="why_2_d">تصفح المعلومات حتى بدون اتصال.</p>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="why-ico"><i class="fa-solid fa-bolt"></i></div>
+      <div>
+        <h3 data-i18n="why_3_t">سريع وبسيط</h3>
+        <p data-i18n="why_3_d">واجهة واضحة للوصول للمعلومة بسرعة.</p>
+      </div>
+    </div>
+
+    <div class="why-box">
+      <div class="why-ico"><i class="fa-solid fa-user-shield"></i></div>
+      <div>
+        <h3 data-i18n="why_4_t">بدون تسجيل دخول</h3>
+        <p data-i18n="why_4_d">لا حسابات ولا خطوات مزعجة.</p>
+      </div>
+    </div>
+  </div>
 </div>
 
 <!-- CITIES -->
-<div class="hero-card">
-<div class="headline">
-<h2>تغطية المدن</h2>
-<p>كربلاء هي المدينة الأساسية، وباقي المدن متوفرة وقيد الإكمال.</p>
-</div>
+<div class="hero-card fade">
+  <div class="headline">
+    <h2 data-i18n="cities_title">تغطية المدن</h2>
+    <p data-i18n="cities_text">كربلاء هي المدينة الأساسية، وباقي المدن متوفرة وقيد الإكمال.</p>
+  </div>
 
-<div class="city-grid">
-<div class="city-card city-active">
-<h3>كربلاء المقدسة</h3>
-<p>المدينة الأساسية للتطبيق.</p>
-<span class="badge-active">متوفر</span>
-</div>
+  <div class="city-grid">
+    <div class="city-card city-active">
+      <h3 data-i18n="c1_name">كربلاء المقدسة</h3>
+      <p data-i18n="c1_desc">المدينة الأساسية للتطبيق.</p>
+      <span class="badge-active" data-i18n="c1_badge">متوفر</span>
+    </div>
 
-<div class="city-card city-coming">
-<h3>بغداد</h3>
-<p>البيانات متوفرة وقيد الإكمال.</p>
-<span class="badge-coming">قيد الإكمال</span>
-</div>
+    <div class="city-card city-coming">
+      <h3 data-i18n="c2_name">بغداد</h3>
+      <p data-i18n="c2_desc">البيانات متوفرة وقيد الإكمال.</p>
+      <span class="badge-coming" data-i18n="c2_badge">قيد الإكمال</span>
+    </div>
 
-<div class="city-card city-coming">
-<h3>النجف الأشرف</h3>
-<p>البيانات متوفرة وقيد الإكمال.</p>
-<span class="badge-coming">قيد الإكمال</span>
-</div>
+    <div class="city-card city-coming">
+      <h3 data-i18n="c3_name">النجف الأشرف</h3>
+      <p data-i18n="c3_desc">البيانات متوفرة وقيد الإكمال.</p>
+      <span class="badge-coming" data-i18n="c3_badge">قيد الإكمال</span>
+    </div>
 
-<div class="city-card city-coming">
-<h3>بابل</h3>
-<p>البيانات متوفرة وقيد الإكمال.</p>
-<span class="badge-coming">قيد الإكمال</span>
-</div>
+    <div class="city-card city-coming">
+      <h3 data-i18n="c4_name">بابل</h3>
+      <p data-i18n="c4_desc">البيانات متوفرة وقيد الإكمال.</p>
+      <span class="badge-coming" data-i18n="c4_badge">قيد الإكمال</span>
+    </div>
 
-<div class="city-card city-coming">
-<h3>البصرة</h3>
-<p>البيانات متوفرة وقيد الإكمال.</p>
-<span class="badge-coming">قيد الإكمال</span>
-</div>
-</div>
-
+    <div class="city-card city-coming">
+      <h3 data-i18n="c5_name">البصرة</h3>
+      <p data-i18n="c5_desc">البيانات متوفرة وقيد الإكمال.</p>
+      <span class="badge-coming" data-i18n="c5_badge">قيد الإكمال</span>
+    </div>
+  </div>
 </div>
 
 </section>
 
 <!-- FOLLOW -->
-<div class="card">
-<h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;">تابعنا على</h2>
-<div class="social-grid">
-<a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
-<a class="social-box" href="https://www.instagram.com/eabrih" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
-<a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
-<a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-</div>
+<div class="card fade">
+  <h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;" data-i18n="follow_head">تابعنا على</h2>
+  <div class="social-grid">
+    <a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener"><i class="fa-brands fa-telegram"></i> Telegram</a>
+    <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i> Instagram</a>
+    <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank" rel="noopener"><i class="fa-brands fa-facebook"></i> Facebook</a>
+    <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank" rel="noopener"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  </div>
 </div>
 
-<footer>
-© <span id="year"></span> عبريه — جميع الحقوق محفوظة.
+<footer class="fade">
+  © <span id="year"></span> <span data-i18n="footer_rights">عبريه — جميع الحقوق محفوظة.</span>
 </footer>
 
 </main>
 
+<button id="topBtn" aria-label="Back to top">↑</button>
+
 <script>
+/* ====== CONFIG ====== */
+const APP_DOWNLOAD_URL = "#"; // ضع رابط التحميل هنا
+const downloadBtn = document.getElementById("downloadBtn");
+if (downloadBtn) downloadBtn.href = APP_DOWNLOAD_URL;
+
+/* ====== Year ====== */
 const y=document.getElementById('year');
 if(y)y.textContent=new Date().getFullYear();
 
+/* ====== Active nav ====== */
 const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
 document.querySelectorAll('.nav a').forEach(a=>{
-if(a.getAttribute('href').toLowerCase()===current)a.classList.add('active');
+  const href=(a.getAttribute('href')||'').toLowerCase();
+  if(href===current) a.classList.add('active');
 });
+
+/* ====== Scroll to top ====== */
+const topBtn = document.getElementById("topBtn");
+window.addEventListener("scroll", () => {
+  if (!topBtn) return;
+  topBtn.style.display = window.scrollY > 260 ? "inline-flex" : "none";
+});
+if (topBtn) topBtn.addEventListener("click", () => window.scrollTo({top:0,behavior:"smooth"}));
+
+/* ====== Fade-in on scroll ====== */
+const faders=document.querySelectorAll(".fade");
+const io=new IntersectionObserver((entries)=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting) e.target.classList.add("show");
+  });
+},{threshold:0.18});
+faders.forEach(el=>io.observe(el));
+
+/* ====== i18n ====== */
+const translations = {
+  ar: {
+    page_title:"عبريه | الرئيسية",
+    page_desc:"عبريه — يجمع خطوط النقل الجماعي الخاص والحكومي داخل المدن العراقية في مكان واحد.",
+    og_title:"عبريه | الرئيسية",
+    og_desc:"عبريه — دليل خطوط النقل داخل المدن العراقية في مكان واحد.",
+
+    nav_home:"الرئيسية",
+    nav_about:"من نحن",
+    nav_privacy:"سياسة الخصوصية",
+    nav_terms:"الشروط والأحكام",
+
+    hero_title:"لا تتحيّر بدوخة الخطوط",
+    hero_text:"عبريه يجمع لك خطوط النقل الجماعي الخاص والحكومي في مكان واحد، من نقطة الانطلاق إلى الوصول، مع تفاصيل السعر، المسافة، والوقت. بدل ما تسأل وتحتار... افتح التطبيق واعرف خطك خلال ثواني.",
+    cta_download:"تحميل التطبيق",
+    cta_faq:"الأسئلة الشائعة",
+
+    badge_1:"مجاني بالكامل",
+    badge_2:"يعمل بدون إنترنت",
+    badge_3:"لا يوجد إعلانات",
+
+    f1_title:"تفاصيل الخط كاملة",
+    f1_text:"السعر، الوقت التقريبي، والمسافة لكل رحلة.",
+    f2_title:"أبرز المحطات",
+    f2_text:"عرض واضح لنقاط المرور من البداية حتى النهاية.",
+    f3_title:"نوع المركبة والاتجاه",
+    f3_text:"تمييز بين النقل الخاص والحكومي (ذهاب / إياب).",
+    f4_title:"تغطية مدن متعددة",
+    f4_text:"التوسع مستمر لإضافة المزيد من المدن والخطوط.",
+
+    why_title:"لماذا عبريه؟",
+    why_text:"مميزات بسيطة لكنها مهمة لتجربة أفضل.",
+    why_1_t:"جميع الخطوط في مكان واحد",
+    why_1_d:"بدلاً من التشتت في مصادر متعددة.",
+    why_2_t:"يعمل بدون إنترنت",
+    why_2_d:"تصفح المعلومات حتى بدون اتصال.",
+    why_3_t:"سريع وبسيط",
+    why_3_d:"واجهة واضحة للوصول للمعلومة بسرعة.",
+    why_4_t:"بدون تسجيل دخول",
+    why_4_d:"لا حسابات ولا خطوات مزعجة.",
+
+    cities_title:"تغطية المدن",
+    cities_text:"كربلاء هي المدينة الأساسية، وباقي المدن متوفرة وقيد الإكمال.",
+    c1_name:"كربلاء المقدسة",
+    c1_desc:"المدينة الأساسية للتطبيق.",
+    c1_badge:"متوفر",
+    c2_name:"بغداد",
+    c2_desc:"البيانات متوفرة وقيد الإكمال.",
+    c2_badge:"قيد الإكمال",
+    c3_name:"النجف الأشرف",
+    c3_desc:"البيانات متوفرة وقيد الإكمال.",
+    c3_badge:"قيد الإكمال",
+    c4_name:"بابل",
+    c4_desc:"البيانات متوفرة وقيد الإكمال.",
+    c4_badge:"قيد الإكمال",
+    c5_name:"البصرة",
+    c5_desc:"البيانات متوفرة وقيد الإكمال.",
+    c5_badge:"قيد الإكمال",
+
+    follow_head:"تابعنا على",
+    footer_rights:"عبريه — جميع الحقوق محفوظة."
+  },
+  en: {
+    page_title:"Eabrih | Home",
+    page_desc:"Eabrih brings public and private transport routes across Iraqi cities into one place.",
+    og_title:"Eabrih | Home",
+    og_desc:"Transport routes across Iraqi cities in one place.",
+
+    nav_home:"Home",
+    nav_about:"About",
+    nav_privacy:"Privacy Policy",
+    nav_terms:"Terms & Conditions",
+
+    hero_title:"No more confusion with routes",
+    hero_text:"Eabrih brings public and private transport routes together in one place—from start to destination—with fare, distance, and time details. Instead of asking around… open the app and find your route in seconds.",
+    cta_download:"Download the App",
+    cta_faq:"FAQ",
+
+    badge_1:"Completely Free",
+    badge_2:"Works Offline",
+    badge_3:"No Ads",
+
+    f1_title:"Full route details",
+    f1_text:"Fare, estimated time, and distance for each trip.",
+    f2_title:"Key stops",
+    f2_text:"A clear list of stops from start to finish.",
+    f3_title:"Vehicle type & direction",
+    f3_text:"Private vs public routes (round trip / one way).",
+    f4_title:"Multi-city coverage",
+    f4_text:"Continuous expansion to add more cities and routes.",
+
+    why_title:"Why Eabrih?",
+    why_text:"Simple features that make a big difference.",
+    why_1_t:"All routes in one place",
+    why_1_d:"No more scattered sources.",
+    why_2_t:"Works offline",
+    why_2_d:"Browse without internet.",
+    why_3_t:"Fast & simple",
+    why_3_d:"Clear UI for quick access.",
+    why_4_t:"No login required",
+    why_4_d:"No accounts, no hassle.",
+
+    cities_title:"City coverage",
+    cities_text:"Karbala is the main city. Other cities are available and being completed.",
+    c1_name:"Karbala",
+    c1_desc:"Main city for the app.",
+    c1_badge:"Available",
+    c2_name:"Baghdad",
+    c2_desc:"Data available and being completed.",
+    c2_badge:"In progress",
+    c3_name:"Najaf",
+    c3_desc:"Data available and being completed.",
+    c3_badge:"In progress",
+    c4_name:"Babylon",
+    c4_desc:"Data available and being completed.",
+    c4_badge:"In progress",
+    c5_name:"Basra",
+    c5_desc:"Data available and being completed.",
+    c5_badge:"In progress",
+
+    follow_head:"Follow us on",
+    footer_rights:"Eabrih — All rights reserved."
+  }
+};
+
+const pageRoot = document.getElementById("pageRoot");
+const toggleBtn = document.getElementById("langToggle");
+const langLabel = document.getElementById("langLabel");
+
+function detectDefaultLang(){
+  const saved = localStorage.getItem("lang");
+  if (saved === "ar" || saved === "en") return saved;
+  const browser = (navigator.language || "ar").toLowerCase();
+  return browser.startsWith("en") ? "en" : "ar";
+}
+
+function applyLanguage(lang){
+  if (pageRoot) pageRoot.classList.remove("show");
+
+  setTimeout(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      const val = translations[lang] && translations[lang][key];
+      if (val) el.textContent = val;
+    });
+
+    document.title = translations[lang].page_title;
+
+    const metaDesc = document.getElementById("metaDesc");
+    if (metaDesc) metaDesc.setAttribute("content", translations[lang].page_desc);
+
+    const ogTitle = document.getElementById("ogTitle");
+    if (ogTitle) ogTitle.setAttribute("content", translations[lang].og_title);
+
+    const ogDesc = document.getElementById("ogDesc");
+    if (ogDesc) ogDesc.setAttribute("content", translations[lang].og_desc);
+
+    if (langLabel) langLabel.textContent = (lang === "ar") ? "EN" : "AR";
+
+    if (pageRoot) pageRoot.classList.add("show");
+  }, 80);
+}
+
+if (toggleBtn) {
+  toggleBtn.addEventListener("click", ()=>{
+    const cur = localStorage.getItem("lang") || detectDefaultLang();
+    applyLanguage(cur === "ar" ? "en" : "ar");
+  });
+}
+
+applyLanguage(detectDefaultLang());
 </script>
 
 </body>
