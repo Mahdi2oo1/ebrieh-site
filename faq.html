@@ -52,6 +52,7 @@
       flex-wrap:wrap;
       gap:8px;
       justify-content:center;
+      align-items:center;
     }
     .nav a{
       padding:8px 14px;
@@ -62,6 +63,7 @@
       font-weight:800;
       color:var(--white);
       transition:.15s ease;
+      will-change:transform;
     }
     .nav a:hover{
       border-color:rgba(255,255,255,.28);
@@ -72,6 +74,28 @@
       border-color: var(--accent);
       color: var(--primary);
     }
+
+    /* Language button */
+    .lang-btn{
+      padding:8px 14px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.25);
+      background:transparent;
+      font-weight:900;
+      color:#fff;
+      cursor:pointer;
+      transition:.2s ease;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      will-change:transform;
+    }
+    .lang-btn:hover{
+      background:var(--accent);
+      color:var(--primary);
+      transform:translateY(-1px);
+    }
+    .lang-btn i{ font-size:14px; }
 
     .page{ padding:20px 0; }
 
@@ -136,6 +160,7 @@
       font-weight:900;
       color:var(--primary);
       transition:.15s ease;
+      will-change:transform;
     }
     .social-box i{
       font-size:18px;
@@ -150,23 +175,23 @@
       .social-box{ grid-column: span 12; }
     }
 
-    .note{
-      margin-top:14px;
-      padding:12px;
-      border:1px dashed var(--border);
-      border-radius:14px;
-      background:#fff;
-      font-size:13px;
-      font-weight:900;
-      color:var(--muted);
-    }
-
     footer {
       padding: 18px 0 26px;
       color: var(--muted);
       font-weight: 800;
       font-size: 12px;
       text-align: center;
+    }
+
+    /* Smooth switch */
+    .fade-swap{
+      opacity:0;
+      transform:translateY(2px);
+      transition:opacity .18s ease, transform .18s ease;
+    }
+    .fade-swap.show{
+      opacity:1;
+      transform:none;
     }
   </style>
 </head>
@@ -177,126 +202,109 @@
   <div class="container">
     <div class="topbar-inner">
       <nav class="nav">
-        <a href="index.html">الرئيسية</a>
-        <a href="about.html">من نحن</a>
-        <a href="privacy.html">سياسة الخصوصية</a>
-        <a href="terms.html">الشروط والأحكام</a>
+        <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+        <a href="about.html" data-i18n="nav_about">من نحن</a>
+        <a href="privacy.html" data-i18n="nav_privacy">سياسة الخصوصية</a>
+        <a href="terms.html" data-i18n="nav_terms">الشروط والأحكام</a>
         <a href="faq.html">FAQ</a>
+
+        <button id="langToggle" class="lang-btn" type="button" aria-label="Toggle language">
+          <i class="fa-solid fa-language"></i>
+          <span id="langLabel">EN</span>
+        </button>
       </nav>
     </div>
   </div>
 </header>
 
-<main class="container page">
+<main class="container page fade-swap" id="pageRoot">
 
   <div class="card">
     <div class="title">
-      <h2>الأسئلة الشائعة</h2>
+      <h2 data-i18n="faq_title">الأسئلة الشائعة</h2>
     </div>
 
     <details>
-      <summary>ما هو تطبيق “عبريه”؟</summary>
-      <p>
-        “عبريه” تطبيق يعرض خطوط النقل داخل المدن العراقية في مكان واحد، مع تفاصيل تساعدك على اختيار الخط المناسب بسرعة.
+      <summary data-i18n="q1">ما هو تطبيق “عبريه”؟</summary>
+      <p data-i18n="a1">“عبريه” تطبيق يعرض خطوط النقل داخل المدن العراقية في مكان واحد، مع تفاصيل تساعدك على اختيار الخط المناسب بسرعة.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q2">ما المعلومات التي يوفرها كل خط؟</summary>
+      <p data-i18n="a2">يعرض التطبيق لكل خط: الأجرة، الوقت التقريبي، المسافة، نوع المركبة (حكومي/خاص)، اتجاه الرحلة (ذهاب/إياب)، أبرز المحطات، المدينة، ورابط مسار الخط على Google Maps.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q3">هل جميع الخطوط تحتوي على رابط خرائط Google Maps؟</summary>
+      <p data-i18n="a3">نعم، جميع الخطوط في التطبيق تحتوي على رابط مسار على Google Maps.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q4">ما المدن المتوفرة حالياً في عبريه؟</summary>
+      <p data-i18n="a4">كربلاء المقدسة، بغداد، النجف الأشرف، بابل، والبصرة. (ملاحظة: التغطية قد لا تكون مكتملة لجميع المدن حالياً).</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q5">هل التطبيق مجاني؟</summary>
+      <p data-i18n="a5">نعم، التطبيق مجاني بالكامل.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q6">هل يحتاج التطبيق إلى إنترنت؟</summary>
+      <p data-i18n="a6">لا، التطبيق لا يحتاج إلى إنترنت للاطلاع على المعلومات. (قد تحتاج بعض الروابط الخارجية مثل خرائط Google إلى اتصال عند فتحها).</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q7">هل توجد إعلانات داخل التطبيق؟</summary>
+      <p data-i18n="a7">لا، لا توجد إعلانات حالياً.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q8">هل يتطلب التطبيق تسجيل دخول أو إنشاء حساب؟</summary>
+      <p data-i18n="a8">لا، حالياً لا يتطلب التطبيق تسجيل دخول أو إنشاء حساب.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q9">هل يطلب التطبيق أذونات مثل الموقع أو الكاميرا أو التخزين؟</summary>
+      <p data-i18n="a9">لا، التطبيق لا يطلب أذونات حساسة مثل الموقع أو الكاميرا أو التخزين.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q10">من أين تأتي معلومات الخطوط؟</summary>
+      <p data-i18n="a10">تعتمد البيانات على مصادر رسمية (مثل وزارة النقل العراقية)، إضافة إلى جمع ميداني وإعداد شخصي ومساهمات المستخدمين.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q11">كيف يتم تحديث المعلومات؟</summary>
+      <p data-i18n="a11">يتم تحديث البيانات عند توفر معلومات جديدة، ونعمل على تحسين التغطية تدريجياً.</p>
+    </details>
+
+    <details>
+      <summary data-i18n="q12">كيف أرسل تصحيحاً أو أقترح خطاً جديداً؟</summary>
+      <p data-i18n="a12">يمكنك إرسال التصحيحات أو الاقتراحات عبر البريد الإلكتروني أو عبر Telegram. يُفضّل ذكر: المدينة، اسم الخط/المحطات، والأجرة (إن وُجدت)، وأي تفاصيل تساعد على التحقق.</p>
+    </details>
+
+    <div class="card" style="margin-top:16px;">
+      <p style="font-weight:900; font-size:14px; margin:0 0 12px; color:var(--primary);" data-i18n="contact_intro">
+        يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر :
       </p>
-    </details>
 
-    <details>
-      <summary>ما المعلومات التي يوفرها كل خط؟</summary>
-      <p>
-        يعرض التطبيق لكل خط: الأجرة، الوقت التقريبي، المسافة، نوع المركبة (حكومي/خاص)، اتجاه الرحلة (ذهاب/إياب)، أبرز المحطات، المدينة، ورابط مسار الخط على Google Maps.
-      </p>
-    </details>
+      <div class="social-grid">
+        <a class="social-box" href="mailto:mahdi.alkarbalai01@gmail.com">
+          <i class="fa-solid fa-envelope"></i>
+          mahdi.alkarbalai01@gmail.com
+        </a>
 
-    <details>
-      <summary>هل جميع الخطوط تحتوي على رابط خرائط Google Maps؟</summary>
-      <p>
-        نعم، جميع الخطوط في التطبيق تحتوي على رابط مسار على Google Maps.
-      </p>
-    </details>
-
-    <details>
-      <summary>ما المدن المتوفرة حالياً في عبريه؟</summary>
-      <p>
-        كربلاء المقدسة، بغداد، النجف الأشرف، بابل، والبصرة. (ملاحظة: التغطية قد لا تكون مكتملة لجميع المدن حالياً).
-      </p>
-    </details>
-
-    <details>
-      <summary>هل التطبيق مجاني؟</summary>
-      <p>نعم، التطبيق مجاني بالكامل.</p>
-    </details>
-
-    <details>
-      <summary>هل يحتاج التطبيق إلى إنترنت؟</summary>
-      <p>
-        لا، التطبيق لا يحتاج إلى إنترنت للاطلاع على المعلومات. (قد تحتاج بعض الروابط الخارجية مثل خرائط Google إلى اتصال عند فتحها).
-      </p>
-    </details>
-
-    <details>
-      <summary>هل توجد إعلانات داخل التطبيق؟</summary>
-      <p>لا، لا توجد إعلانات حالياً.</p>
-    </details>
-
-    <details>
-      <summary>هل يتطلب التطبيق تسجيل دخول أو إنشاء حساب؟</summary>
-      <p>لا، حالياً لا يتطلب التطبيق تسجيل دخول أو إنشاء حساب.</p>
-    </details>
-
-    <details>
-      <summary>هل يطلب التطبيق أذونات مثل الموقع أو الكاميرا أو التخزين؟</summary>
-      <p>
-        لا، التطبيق لا يطلب أذونات حساسة مثل الموقع أو الكاميرا أو التخزين.
-      </p>
-    </details>
-
-    <details>
-      <summary>من أين تأتي معلومات الخطوط؟</summary>
-      <p>
-        تعتمد البيانات على مصادر رسمية (مثل وزارة النقل العراقية)، إضافة إلى جمع ميداني وإعداد شخصي ومساهمات المستخدمين.
-      </p>
-    </details>
-
-    <details>
-      <summary>كيف يتم تحديث المعلومات؟</summary>
-      <p>
-        يتم تحديث البيانات عند توفر معلومات جديدة، ونعمل على تحسين التغطية تدريجياً.
-      </p>
-    </details>
-
-    <details>
-      <summary>كيف أرسل تصحيحاً أو أقترح خطاً جديداً؟</summary>
-      <p>
-        يمكنك إرسال التصحيحات أو الاقتراحات عبر البريد الإلكتروني أو عبر Telegram. يُفضّل ذكر: المدينة، اسم الخط/المحطات، والأجرة (إن وُجدت)، وأي تفاصيل تساعد على التحقق.
-      </p>
-    </details>
-
-<div class="card">
-  
-  <p style="font-weight:900; font-size:14px; margin:0 0 12px; color:var(--primary);">
-    يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر :
-  </p>
-  
-  <div class="social-grid">
-    
-    <a class="social-box" href="mailto:mahdi.alkarbalai01@gmail.com">
-      <i class="fa-solid fa-envelope"></i>
-      mahdi.alkarbalai01@gmail.com
-    </a>
-    
-    <a class="social-box" href="https://t.me/fdr_0" target="_blank" rel="noopener">
-      <i class="fa-brands fa-telegram"></i>
-      @fdr_0
-    </a>
-    
-  </div>
-  
-</div>
+        <a class="social-box" href="https://t.me/fdr_0" target="_blank" rel="noopener">
+          <i class="fa-brands fa-telegram"></i>
+          @fdr_0
+        </a>
+      </div>
+    </div>
   </div>
 
   <div class="card">
-    <h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;">تابعنا على</h2>
+    <h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;" data-i18n="follow_head">تابعنا على</h2>
 
     <div class="social-grid">
       <a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener">
@@ -315,20 +323,162 @@
   </div>
 
   <footer>
-    © <span id="year"></span> عبريه — جميع الحقوق محفوظة.
+    © <span id="year"></span> <span data-i18n="footer_rights">عبريه — جميع الحقوق محفوظة.</span>
   </footer>
 
 </main>
 
 <script>
+  // year
   const y = document.getElementById('year');
   if (y) y.textContent = new Date().getFullYear();
 
+  // active nav
   const current = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
   document.querySelectorAll('.nav a').forEach(a => {
     const href = (a.getAttribute('href') || '').toLowerCase();
     if (href === current) a.classList.add('active');
   });
+
+  // i18n translations
+  const translations = {
+    ar: {
+      nav_home: "الرئيسية",
+      nav_about: "من نحن",
+      nav_privacy: "سياسة الخصوصية",
+      nav_terms: "الشروط والأحكام",
+
+      faq_title: "الأسئلة الشائعة",
+
+      q1: "ما هو تطبيق “عبريه”؟",
+      a1: "“عبريه” تطبيق يعرض خطوط النقل داخل المدن العراقية في مكان واحد، مع تفاصيل تساعدك على اختيار الخط المناسب بسرعة.",
+
+      q2: "ما المعلومات التي يوفرها كل خط؟",
+      a2: "يعرض التطبيق لكل خط: الأجرة، الوقت التقريبي، المسافة، نوع المركبة (حكومي/خاص)، اتجاه الرحلة (ذهاب/إياب)، أبرز المحطات، المدينة، ورابط مسار الخط على Google Maps.",
+
+      q3: "هل جميع الخطوط تحتوي على رابط خرائط Google Maps؟",
+      a3: "نعم، جميع الخطوط في التطبيق تحتوي على رابط مسار على Google Maps.",
+
+      q4: "ما المدن المتوفرة حالياً في عبريه؟",
+      a4: "كربلاء المقدسة، بغداد، النجف الأشرف، بابل، والبصرة. (ملاحظة: التغطية قد لا تكون مكتملة لجميع المدن حالياً).",
+
+      q5: "هل التطبيق مجاني؟",
+      a5: "نعم، التطبيق مجاني بالكامل.",
+
+      q6: "هل يحتاج التطبيق إلى إنترنت؟",
+      a6: "لا، التطبيق لا يحتاج إلى إنترنت للاطلاع على المعلومات. (قد تحتاج بعض الروابط الخارجية مثل خرائط Google إلى اتصال عند فتحها).",
+
+      q7: "هل توجد إعلانات داخل التطبيق؟",
+      a7: "لا، لا توجد إعلانات حالياً.",
+
+      q8: "هل يتطلب التطبيق تسجيل دخول أو إنشاء حساب؟",
+      a8: "لا، حالياً لا يتطلب التطبيق تسجيل دخول أو إنشاء حساب.",
+
+      q9: "هل يطلب التطبيق أذونات مثل الموقع أو الكاميرا أو التخزين؟",
+      a9: "لا، التطبيق لا يطلب أذونات حساسة مثل الموقع أو الكاميرا أو التخزين.",
+
+      q10: "من أين تأتي معلومات الخطوط؟",
+      a10: "تعتمد البيانات على مصادر رسمية (مثل وزارة النقل العراقية)، إضافة إلى جمع ميداني وإعداد شخصي ومساهمات المستخدمين.",
+
+      q11: "كيف يتم تحديث المعلومات؟",
+      a11: "يتم تحديث البيانات عند توفر معلومات جديدة، ونعمل على تحسين التغطية تدريجياً.",
+
+      q12: "كيف أرسل تصحيحاً أو أقترح خطاً جديداً؟",
+      a12: "يمكنك إرسال التصحيحات أو الاقتراحات عبر البريد الإلكتروني أو عبر Telegram. يُفضّل ذكر: المدينة، اسم الخط/المحطات، والأجرة (إن وُجدت)، وأي تفاصيل تساعد على التحقق.",
+
+      contact_intro: "يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر :",
+      follow_head: "تابعنا على",
+      footer_rights: "عبريه — جميع الحقوق محفوظة."
+    },
+
+    en: {
+      nav_home: "Home",
+      nav_about: "About",
+      nav_privacy: "Privacy Policy",
+      nav_terms: "Terms & Conditions",
+
+      faq_title: "Frequently Asked Questions",
+
+      q1: "What is the “Eabrih” app?",
+      a1: "Eabrih is an app that collects transport routes within Iraqi cities in one place, helping you choose the right route quickly.",
+
+      q2: "What information does each route provide?",
+      a2: "For each route, the app shows: fare, estimated time, distance, vehicle type (public/private), trip direction (round trip), key stops, city, and a Google Maps link.",
+
+      q3: "Do all routes include a Google Maps link?",
+      a3: "Yes, all routes in the app include a Google Maps route link.",
+
+      q4: "Which cities are currently available in Eabrih?",
+      a4: "Karbala, Baghdad, Najaf, Babylon, and Basra. (Note: coverage may not be complete for every city yet).",
+
+      q5: "Is the app free?",
+      a5: "Yes, the app is completely free.",
+
+      q6: "Does the app require internet?",
+      a6: "No, the app works offline for viewing information. (Some external links like Google Maps may require internet when opened).",
+
+      q7: "Are there ads inside the app?",
+      a7: "No, there are currently no ads.",
+
+      q8: "Does the app require login or an account?",
+      a8: "No, the app currently does not require login or account creation.",
+
+      q9: "Does the app request permissions like location, camera, or storage?",
+      a9: "No, the app does not request sensitive permissions like location, camera, or storage.",
+
+      q10: "Where does the route information come from?",
+      a10: "Data is based on official sources (such as the Iraqi Ministry of Transport), plus field collection, personal preparation, and user contributions.",
+
+      q11: "How is the information updated?",
+      a11: "Data is updated whenever new information becomes available, and coverage is improved gradually.",
+
+      q12: "How can I submit a correction or suggest a new route?",
+      a12: "You can send corrections or suggestions via email or Telegram. Please include: city, route name/stops, fare (if available), and any details that help verification.",
+
+      contact_intro: "We welcome your feedback, suggestions, or reports of any incorrect information via:",
+      follow_head: "Follow us on",
+      footer_rights: "Eabrih — All rights reserved."
+    }
+  };
+
+  const pageRoot = document.getElementById("pageRoot");
+  const toggleBtn = document.getElementById("langToggle");
+  const langLabel = document.getElementById("langLabel");
+
+  function detectDefaultLang(){
+    const saved = localStorage.getItem("lang");
+    if (saved === "ar" || saved === "en") return saved;
+    const browser = (navigator.language || "ar").toLowerCase();
+    return browser.startsWith("en") ? "en" : "ar";
+  }
+
+  function applyLanguage(lang){
+    pageRoot.classList.remove("show");
+    setTimeout(() => {
+      document.documentElement.lang = lang;
+      document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+      localStorage.setItem("lang", lang);
+
+      document.querySelectorAll("[data-i18n]").forEach(el=>{
+        const key = el.getAttribute("data-i18n");
+        const val = translations[lang] && translations[lang][key];
+        if (val) el.textContent = val;
+      });
+
+      document.title = (lang === "ar") ? "FAQ" : "FAQ";
+      langLabel.textContent = (lang === "ar") ? "EN" : "AR";
+
+      pageRoot.classList.add("show");
+    }, 80);
+  }
+
+  toggleBtn.addEventListener("click", ()=>{
+    const currentLang = localStorage.getItem("lang") || detectDefaultLang();
+    applyLanguage(currentLang === "ar" ? "en" : "ar");
+  });
+
+  // Init
+  applyLanguage(detectDefaultLang());
 </script>
 
 </body>
