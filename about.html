@@ -32,7 +32,7 @@ a{ text-decoration:none; color:inherit; }
   display:flex; justify-content:center; padding:12px 0;
 }
 .nav{
-  display:flex; flex-wrap:wrap; gap:8px; justify-content:center;
+  display:flex; flex-wrap:wrap; gap:8px; justify-content:center; align-items:center;
 }
 .nav a{
   padding:8px 14px;
@@ -42,6 +42,7 @@ a{ text-decoration:none; color:inherit; }
   font-size:14px; font-weight:800;
   color:var(--white);
   transition:.15s ease;
+  will-change:transform;
 }
 .nav a:hover{
   border-color:rgba(255,255,255,.28);
@@ -52,6 +53,28 @@ a{ text-decoration:none; color:inherit; }
   border-color:var(--accent);
   color:var(--primary);
 }
+
+/* Language button */
+.lang-btn{
+  padding:8px 14px;
+  border-radius:999px;
+  border:1px solid rgba(255,255,255,.25);
+  background:transparent;
+  font-weight:900;
+  color:#fff;
+  cursor:pointer;
+  transition:.2s ease;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  will-change:transform;
+}
+.lang-btn:hover{
+  background:var(--accent);
+  color:var(--primary);
+  transform:translateY(-1px);
+}
+.lang-btn i{ font-size:14px; }
 
 /* Page */
 .page{ padding:18px 0; }
@@ -126,6 +149,7 @@ a{ text-decoration:none; color:inherit; }
   font-weight:900;
   color:var(--primary);
   transition:.15s ease;
+  will-change:transform;
 }
 .social-box:hover{
   transform:translateY(-2px);
@@ -142,6 +166,17 @@ footer{
   font-size:12px;
   text-align:center;
 }
+
+/* Smooth switch */
+.fade-swap{
+  opacity:0;
+  transform:translateY(2px);
+  transition:opacity .18s ease, transform .18s ease;
+}
+.fade-swap.show{
+  opacity:1;
+  transform:none;
+}
 </style>
 </head>
 
@@ -151,111 +186,115 @@ footer{
 <div class="container">
 <div class="topbar-inner">
 <nav class="nav">
-<a href="index.html">الرئيسية</a>
-<a href="about.html">من نحن</a>
-<a href="privacy.html">سياسة الخصوصية</a>
-<a href="terms.html">الشروط والأحكام</a>
-<a href="faq.html">FAQ</a>
+  <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+  <a href="about.html" data-i18n="nav_about">من نحن</a>
+  <a href="privacy.html" data-i18n="nav_privacy">سياسة الخصوصية</a>
+  <a href="terms.html" data-i18n="nav_terms">الشروط والأحكام</a>
+  <a href="faq.html">FAQ</a>
+
+  <button id="langToggle" class="lang-btn" type="button" aria-label="Toggle language">
+    <i class="fa-solid fa-language"></i>
+    <span id="langLabel">EN</span>
+  </button>
 </nav>
 </div>
 </div>
 </header>
 
-<main class="container page">
+<main class="container page fade-swap" id="pageRoot">
 
 <!-- Main Card -->
 <div class="card">
 
-<div class="title">
-<h2>من نحن</h2>
-</div>
+  <div class="title">
+    <h2 data-i18n="about_title">من نحن</h2>
+  </div>
 
-<p class="muted">
-تطبيق عبريه هو مشروع شخصي يهدف إلى تسهيل الوصول إلى معلومات خطوط النقل الجماعي داخل المدن العراقية،
-عبر تقديم بيانات واضحة ومنظمة تساعد الجميع على التنقّل بسهولة وثقة.
-انطلقت المبادرة من مدينة كربلاء المقدسة، وتوسعت لتشمل بغداد والنجف الأشرف وبابل والبصرة.
-</p>
+  <p class="muted" data-i18n="about_intro">
+    تطبيق عبريه هو مشروع شخصي يهدف إلى تسهيل الوصول إلى معلومات خطوط النقل الجماعي داخل المدن العراقية،
+    عبر تقديم بيانات واضحة ومنظمة تساعد الجميع على التنقّل بسهولة وثقة.
+    انطلقت المبادرة من مدينة كربلاء المقدسة، وتوسعت لتشمل بغداد والنجف الأشرف وبابل والبصرة.
+  </p>
 
-<div class="grid">
+  <div class="grid">
 
-<div class="box">
-<h3>هدف التطبيق</h3>
-<p>
-توفير دليل شامل لخطوط النقل في مكان واحد، يتضمن تفاصيل كل خط مثل الأجرة،
-الوقت التقريبي، المسافة، نوع المركبة، ومسار الرحلة.
-</p>
-</div>
+    <div class="box">
+      <h3 data-i18n="g1_title">هدف التطبيق</h3>
+      <p data-i18n="g1_text">
+        توفير دليل شامل لخطوط النقل في مكان واحد، يتضمن تفاصيل كل خط مثل الأجرة،
+        الوقت التقريبي، المسافة، نوع المركبة، ومسار الرحلة.
+      </p>
+    </div>
 
-<div class="box">
-<h3>ما الذي يميز عبريه</h3>
-<p>
-يجمع التطبيق جميع الخطوط داخل المدينة في منصة واحدة بدلاً من تشتتها في مصادر متعددة،
-مع عرض تفاصيل دقيقة لكل خط لتسهيل اتخاذ القرار.
-</p>
-</div>
+    <div class="box">
+      <h3 data-i18n="g2_title">ما الذي يميز عبريه</h3>
+      <p data-i18n="g2_text">
+        يجمع التطبيق جميع الخطوط داخل المدينة في منصة واحدة بدلاً من تشتتها في مصادر متعددة،
+        مع عرض تفاصيل دقيقة لكل خط لتسهيل اتخاذ القرار.
+      </p>
+    </div>
 
-<div class="box">
-<h3>مصادر المعلومات</h3>
-<p>
-تعتمد البيانات على مصادر رسمية، وجمع ميداني مباشر،
-إضافةً إلى مساهمات المستخدمين لضمان التحديث المستمر قدر الإمكان.
-</p>
-</div>
+    <div class="box">
+      <h3 data-i18n="g3_title">مصادر المعلومات</h3>
+      <p data-i18n="g3_text">
+        تعتمد البيانات على مصادر رسمية، وجمع ميداني مباشر،
+        إضافةً إلى مساهمات المستخدمين لضمان التحديث المستمر قدر الإمكان.
+      </p>
+    </div>
 
-<div class="box">
-<h3>رؤيتنا</h3>
-<p>
-نسعى إلى توسيع التغطية لتشمل مدناً إضافية،
-وتطوير ميزات متقدمة مثل عرض المسارات بشكل أدق وربما خدمات تتبع مستقبلية.
-</p>
-</div>
+    <div class="box">
+      <h3 data-i18n="g4_title">رؤيتنا</h3>
+      <p data-i18n="g4_text">
+        نسعى إلى توسيع التغطية لتشمل مدناً إضافية،
+        وتطوير ميزات متقدمة مثل عرض المسارات بشكل أدق وربما خدمات تتبع مستقبلية.
+      </p>
+    </div>
 
-</div> <!-- End Grid -->
+  </div>
 
+  <!-- Contact Card -->
+  <div class="card" style="margin-top:16px;">
+    <p style="font-weight:900;font-size:14px;margin:0 0 12px;color:var(--primary);" data-i18n="contact_intro">
+      يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر:
+    </p>
 
+    <div class="social-grid">
+      <a class="social-box" href="mailto:mahdi.alkarbalai01@gmail.com">
+        <i class="fa-solid fa-envelope"></i>
+        mahdi.alkarbalai01@gmail.com
+      </a>
 
-<!-- Contact Card -->
-<div class="card">
-<p style="font-weight:900;font-size:14px;margin:0 0 12px;color:var(--primary);">
-يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر:
-</p>
+      <a class="social-box" href="https://t.me/fdr_0" target="_blank" rel="noopener">
+        <i class="fa-brands fa-telegram"></i>
+        @fdr_0
+      </a>
+    </div>
+  </div>
 
-<div class="social-grid">
-<a class="social-box" href="mailto:mahdi.alkarbalai01@gmail.com">
-<i class="fa-solid fa-envelope"></i>
-mahdi.alkarbalai01@gmail.com
-</a>
-
-<a class="social-box" href="https://t.me/fdr_0" target="_blank" rel="noopener">
-<i class="fa-brands fa-telegram"></i>
-@fdr_0
-</a>
-</div>
-</div>
 </div>
 
 <!-- Follow -->
 <div class="card">
-<h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;">تابعنا على</h2>
+  <h2 style="margin:0 0 10px;color:var(--primary);font-size:18px;" data-i18n="follow_head">تابعنا على</h2>
 
-<div class="social-grid">
-<a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener">
-<i class="fa-brands fa-telegram"></i> Telegram
-</a>
-<a class="social-box" href="https://www.instagram.com/eabrih" target="_blank" rel="noopener">
-<i class="fa-brands fa-instagram"></i> Instagram
-</a>
-<a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank" rel="noopener">
-<i class="fa-brands fa-facebook"></i> Facebook
-</a>
-<a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank" rel="noopener">
-<i class="fa-brands fa-linkedin"></i> LinkedIn
-</a>
-</div>
+  <div class="social-grid">
+    <a class="social-box" href="https://t.me/eabrih" target="_blank" rel="noopener">
+      <i class="fa-brands fa-telegram"></i> Telegram
+    </a>
+    <a class="social-box" href="https://www.instagram.com/eabrih" target="_blank" rel="noopener">
+      <i class="fa-brands fa-instagram"></i> Instagram
+    </a>
+    <a class="social-box" href="https://www.facebook.com/share/1FpbNHPXDe/" target="_blank" rel="noopener">
+      <i class="fa-brands fa-facebook"></i> Facebook
+    </a>
+    <a class="social-box" href="https://www.linkedin.com/company/eabrih/" target="_blank" rel="noopener">
+      <i class="fa-brands fa-linkedin"></i> LinkedIn
+    </a>
+  </div>
 </div>
 
 <footer>
-© <span id="year"></span> عبريه — جميع الحقوق محفوظة.
+  © <span id="year"></span> <span data-i18n="footer_rights">عبريه — جميع الحقوق محفوظة.</span>
 </footer>
 
 </main>
@@ -266,8 +305,113 @@ if(y)y.textContent=new Date().getFullYear();
 
 const current=(location.pathname.split('/').pop()||'index.html').toLowerCase();
 document.querySelectorAll('.nav a').forEach(a=>{
-if(a.getAttribute('href').toLowerCase()===current)a.classList.add('active');
+  const href=(a.getAttribute('href')||'').toLowerCase();
+  if(href===current) a.classList.add('active');
 });
+
+/* i18n */
+const translations = {
+  ar: {
+    nav_home: "الرئيسية",
+    nav_about: "من نحن",
+    nav_privacy: "سياسة الخصوصية",
+    nav_terms: "الشروط والأحكام",
+
+    about_title: "من نحن",
+    about_intro:
+      "تطبيق عبريه هو مشروع شخصي يهدف إلى تسهيل الوصول إلى معلومات خطوط النقل الجماعي داخل المدن العراقية، عبر تقديم بيانات واضحة ومنظمة تساعد الجميع على التنقّل بسهولة وثقة. انطلقت المبادرة من مدينة كربلاء المقدسة، وتوسعت لتشمل بغداد والنجف الأشرف وبابل والبصرة.",
+
+    g1_title: "هدف التطبيق",
+    g1_text:
+      "توفير دليل شامل لخطوط النقل في مكان واحد، يتضمن تفاصيل كل خط مثل الأجرة، الوقت التقريبي، المسافة، نوع المركبة، ومسار الرحلة.",
+
+    g2_title: "ما الذي يميز عبريه",
+    g2_text:
+      "يجمع التطبيق جميع الخطوط داخل المدينة في منصة واحدة بدلاً من تشتتها في مصادر متعددة، مع عرض تفاصيل دقيقة لكل خط لتسهيل اتخاذ القرار.",
+
+    g3_title: "مصادر المعلومات",
+    g3_text:
+      "تعتمد البيانات على مصادر رسمية، وجمع ميداني مباشر، إضافةً إلى مساهمات المستخدمين لضمان التحديث المستمر قدر الإمكان.",
+
+    g4_title: "رؤيتنا",
+    g4_text:
+      "نسعى إلى توسيع التغطية لتشمل مدناً إضافية، وتطوير ميزات متقدمة مثل عرض المسارات بشكل أدق وربما خدمات تتبع مستقبلية.",
+
+    contact_intro: "يسعدنا استقبال ملاحظاتكم واقتراحاتكم أو الإبلاغ عن أي خطأ في المعلومات عبر:",
+    follow_head: "تابعنا على",
+    footer_rights: "عبريه — جميع الحقوق محفوظة."
+  },
+
+  en: {
+    nav_home: "Home",
+    nav_about: "About",
+    nav_privacy: "Privacy Policy",
+    nav_terms: "Terms & Conditions",
+
+    about_title: "About Us",
+    about_intro:
+      "Eabrih is a personal project that makes it easier to access public transport route information across Iraqi cities. It provides clear, organized data to help everyone move with confidence. The initiative started in Karbala and expanded to Baghdad, Najaf, Babylon, and Basra.",
+
+    g1_title: "Our Goal",
+    g1_text:
+      "Provide a comprehensive guide to transport routes in one place, including fare, estimated time, distance, vehicle type, and route path.",
+
+    g2_title: "What Makes Eabrih Different",
+    g2_text:
+      "The app brings city routes into a single platform instead of scattered sources, with detailed information for each route to support better decisions.",
+
+    g3_title: "Information Sources",
+    g3_text:
+      "Data is based on official sources, direct field collection, and user contributions to keep information updated as much as possible.",
+
+    g4_title: "Our Vision",
+    g4_text:
+      "We aim to expand coverage to more cities and develop advanced features such as more accurate route display and possibly future tracking services.",
+
+    contact_intro: "We welcome your feedback, suggestions, or reports of any incorrect information via:",
+    follow_head: "Follow us on",
+    footer_rights: "Eabrih — All rights reserved."
+  }
+};
+
+const pageRoot = document.getElementById("pageRoot");
+const toggleBtn = document.getElementById("langToggle");
+const langLabel = document.getElementById("langLabel");
+
+function detectDefaultLang(){
+  const saved = localStorage.getItem("lang");
+  if (saved === "ar" || saved === "en") return saved;
+  const browser = (navigator.language || "ar").toLowerCase();
+  return browser.startsWith("en") ? "en" : "ar";
+}
+
+function applyLanguage(lang){
+  pageRoot.classList.remove("show");
+  setTimeout(() => {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = (lang === "ar") ? "rtl" : "ltr";
+    localStorage.setItem("lang", lang);
+
+    document.querySelectorAll("[data-i18n]").forEach(el=>{
+      const key = el.getAttribute("data-i18n");
+      const val = translations[lang] && translations[lang][key];
+      if (val) el.textContent = val;
+    });
+
+    document.title = (lang === "ar") ? "من نحن" : "About Us";
+    langLabel.textContent = (lang === "ar") ? "EN" : "AR";
+
+    pageRoot.classList.add("show");
+  }, 80);
+}
+
+toggleBtn.addEventListener("click", ()=>{
+  const currentLang = localStorage.getItem("lang") || detectDefaultLang();
+  applyLanguage(currentLang === "ar" ? "en" : "ar");
+});
+
+// Init
+applyLanguage(detectDefaultLang());
 </script>
 
 </body>
